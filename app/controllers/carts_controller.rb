@@ -1,10 +1,11 @@
 class CartsController < ApplicationController
   def show
-    @cart = Cart.find_or_create
+    @cart = Cart.where(status: 'open')
   end
 
-  def add_to_cart
-    @cart = Cart.find_or_create
-    @item = Item.create(params)
+# should be find_or_create? render show template and return the cart object
+  def create
+    @cart = Cart.create(status: 'open')
+    render 'show'
   end
 end
