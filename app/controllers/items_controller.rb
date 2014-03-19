@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def create
-    Item.create(
+    @item = Item.create(
       cart_id: item_params[:cart],
       product_id: item_params[:product],
       quantity: item_params[:quantity],
@@ -13,6 +13,15 @@ class ItemsController < ApplicationController
   # This is showing all of the items in a cart, not all of the items
   def show
     @items = params[:ids]
+    render "index"
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(
+      quantity: item_params[:quantity],
+      item_price: item_params[:item_price])
+    render "index"
   end
 
   private

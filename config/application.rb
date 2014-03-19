@@ -16,7 +16,7 @@ module EmberApi
      config.middleware.use Rack::Cors do
       allow do
         origins 'http://localhost:9000'
-        resource '*', :headers => :any, :methods => [:get, :post, :options, :delete, :patch]
+        resource '*', :headers => :any, :methods => [:get, :post, :options, :delete, :patch, :put, :update]
       end
     end
     # Settings in config/environments/* take precedence over those specified here.
