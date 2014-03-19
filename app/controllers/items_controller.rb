@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
       quantity: item_params[:quantity],
       item_price: item_params[:item_price]
     )
-    @cart = item_params[:cart]
+    @cart = Cart.find(item_params[:cart].to_i)
     render '/carts/show'
   end
 
