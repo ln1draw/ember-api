@@ -24,6 +24,12 @@ class ItemsController < ApplicationController
     render "index"
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    render "index"
+  end
+
   private
   def item_params
     params.require(:item).permit(:cart, :product, :quantity, :item_price, :ids)
